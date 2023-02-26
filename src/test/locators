@@ -1,0 +1,28 @@
+#LoginPage
+
+
+loginPage.input.email/phone=.//input[@name='auth_login']
+loginPage.input.Password= .//input[@name='auth_password']
+loginPage.button.SignInMainPage= .//button[@class='ui-btn-account']
+loginPage.button.SignInLogin=
+loginPage.input.userName.register=
+loginPage.input.email=
+loginPage.input.password.register=
+loginPage.button.SignUp =
+
+#HomePage
+HomePage.button.MyProfile = .//button[@class='auth__icon ui-btn-nav-circle ']
+HomePage.button.SignOut =
+HomePage.img.MyProfile =
+HomePage.img.Avatar =
+HomePage.button.CreatePost= .
+HomePage.input.PostTitle=
+HomePage.textarea.PostBody=
+HomePage.input.PostCheckbox=
+HomePage.select.PostSelectValue=
+HomePage.button.SaveNewPost=
+HomePage.div.MessagePostCreated=
+HomePage.href.FirstPostOfList=
+HomePage.href.EditPost=
+HomePage.href.DeletePost=
+
