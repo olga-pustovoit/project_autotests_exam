@@ -4,7 +4,7 @@
 loginPage.input.email/phone=.//input[@name='auth_login']
 loginPage.input.Password= .//input[@name='auth_password']
 loginPage.button.SignInMainPage= .//button[@class='ui-btn-account']
-loginPage.button.SignInLogin=
+loginPage.button.SignInLogin= .//button[@class='ui-btn-primary' and contains(text(), '  Увійти')]
 loginPage.input.userName.register=
 loginPage.input.email=
 loginPage.input.password.register=
