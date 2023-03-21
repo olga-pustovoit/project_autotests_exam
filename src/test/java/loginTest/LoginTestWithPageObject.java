@@ -4,7 +4,6 @@ import baseTest.BaseTest;
 import libs.TestData;
 import org.junit.Assert;
 import org.junit.Test;
-import pages.elements.HeaderElement;
 
 public class LoginTestWithPageObject extends BaseTest {
 
