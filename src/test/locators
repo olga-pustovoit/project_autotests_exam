@@ -1,0 +1,50 @@
+#LoginPage
+
+loginPage.input.email/phone=.//input[@name='auth_login']
+loginPage.input.Password= .//input[@name='auth_password']
+loginPage.button.SignInMainPage= .//button[@class='ui-btn-account']
+loginPage.button.SignInLogin= .//button[@class='ui-btn-primary' and contains(text(), '  Увійти')]+
+inputLoginRegistration = ".//input[@name='reg_firstname']"
+inputEmailRegistration = ".//input[@name='reg_email']"
+inputPasswordRegistration = ".//input[@name='reg_password']"
+listOfErrorsLocator = ".//*[@class='err-mess__text ui-base-field__message']"
+buttonSignInRegistration = ".//button[@class='ui-btn-account']"
+buttonRedirectToSignIn = ".//button[@class='ui-btn-link']"
+inputSurnameIntoRegistration = ".//input[@name='reg_lastname']"
+inputPhoneIntoRegistrationForm = ".//input[@type='tel']"
+checkBox = ".//input[@type='checkbox']"
+
+
+#HeaderElements
+
+buttonMyProfile = ".//button[@class='auth__icon ui-btn-nav-circle ']"
+inputSearchField= ".//input[@type='search']"
+buttonSearch = ".//*[contains(text(),'Знайти')]"
+nameOfBook = ".//*[@class='product-listing view-search']"
+locatorBook = ".//span[@title='Java Spider']"
+
+
+   #HomePage
+
+addToCartButton = ".//button[@class='ui-btn-secondary add-to-cart'][1]"
+imgBook = ".//*[@class=\"category-card category-layout expanded\"]"
+successMessage = ".//div[@data-testid='notificationMessage']"
+buttonAddToFavorite = ".//button[@class='ui-btn-favorite square']"
+checkBoxList = ".//span[@class=\"h4 pointer ui-filter-checkbox__text\"and contains(text(),'My Favorite List') ]"
+buttonCart = ".//button[@class='ui-btn-shopping-cart']"
+deleteBookButton = ".//span[@class='header-clear-cart']"
+OKButton = ".//button[@class=\"btn--info\"][2]"
+checkMessageDeleteBookFromCart = ".//span[@class='microcart-empty-title']"
+
+
+#MyProfilePage
+
+xButton = ".//button[@class=\"ui-btn-close ui-btn-close\" and @data-v-27fe0636 ]"
+favoriteBooks = ".//*[contains(text(),'Бажані книги')]"
+createList = ".//button[@class=\"btn btn--create\"]"
+nameList = ".//input[@name='createWishlist']"
+saveListButton = ".//button[@class=\"ui-btn-primary\"and contains(text(),'Зберегти')]"
+successButtonAddList = ".//button[@class='btn--info response']"
+hoverToList = ".//div[@class='wishlist__aside-item _active']"
+deliteListButton = ".//div[@class='correct__item']"
+buttonDeletePopUp = ".//button[@class='btn--info']"

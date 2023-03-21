@@ -1,0 +1,62 @@
+#1 Check the login with valid data
+STR
+    1. Open the page https://www.yakaboo.ua/
+    2. Click on the button "Увійти"
+    2. Enter a valid number phone/ email and password
+    3 Click the button "Увійти"
+ER
+    The user has successfully logged in.
+    Check if the "profile" button is displayed
+    Check the successes message displayed
+_____________________________________
+
+#2 Check registration with invalid data
+Test data:
+username- "testname"
+email -"qaemail@qmail.com"
+Password -"testpassword123"
+username and email- must be unique for autotest
+
+STR
+    1. Open the page https://www.yakaboo.ua/
+    2. Enter your username, email and password
+    3 Click the "Sign up for OurApp" button
+ER
+    The user has successfully registered.
+        Check if the "Sign Out" button is displayed
+        Check the username displayed in the page header
+_____________________________________
+
+#3 Check the possibility to find book - Java Spider
+STR
+   1. Log in to https://www.yakaboo.ua/
+   2. Click on search field
+   3. Input text - Java Spider
+   4. Click button "Find"
+ER
+   URL was change
+   Check what book with name Java Spider was searched
+_____________________________________
+
+#4 Check to add the book to favorite books
+STR
+   1. Log in to https://www.yakaboo.ua/
+   2. Click the My Profile button
+   3. Click on Favorite books
+   4. Create list
+   5. Find book - Java Spider
+   6. Click add to favorite
+ER
+   Book - Java Spider was add to favorite books
+   Check what book Java Spider displayed in list of favorite books
+_____________________________________
+
+#5 Check the possibility to add the book to cart
+STR
+   1. Log in to https://www.yakaboo.ua/
+   2. Find book - Java Spider
+   3. Click on button add to cart
+ER
+   The book - Java Spider was add to cart
+   Check what Java Spider book displayed in cart
+_____________________________________
