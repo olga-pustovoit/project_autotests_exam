@@ -27,9 +27,6 @@ public class BaseTest {
     @Before
     public void setUp() {
         logger.info("-------- " + testName.getMethodName() + " was started --------");
-//        закоментовану інфу хочу лишити для себе
-//        WebDriverManager.chromedriver().setup();
-//        webDriver = new ChromeDriver();
         webDriver = initDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -66,8 +63,6 @@ public class BaseTest {
             WebDriverManager.edgedriver().setup();
             webDriver=new EdgeDriver();
         }else if ("ie".equalsIgnoreCase(browser)) {
-            //WebDriverManager.iedriver().setup();
-            // in most cases 32bit version is needed
             WebDriverManager.iedriver().arch32().setup();
             return new InternetExplorerDriver();
         }

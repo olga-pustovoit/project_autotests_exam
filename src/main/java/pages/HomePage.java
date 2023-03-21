@@ -1,14 +1,11 @@
 package pages;
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.elements.HeaderElement;
-
 import java.time.Duration;
-import java.util.List;
 
 public class HomePage extends ParentPage{
 
@@ -17,8 +14,6 @@ public class HomePage extends ParentPage{
 
     @FindBy(xpath = ".//*[contains(text(),'Знайти')]")
     private WebElement buttonSearch;
-
-    private String nameOfBook = ".//*[@class='product-listing view-search']";
 
     @FindBy(xpath = ".//span[@title='Java Spider']")
     private WebElement locatorBook;
@@ -29,7 +24,7 @@ public class HomePage extends ParentPage{
     @FindBy(xpath = ".//button[@class='ui-btn-secondary add-to-cart'][1]")
     private WebElement addToCartButton;
 
-    @FindBy(xpath = ".//*[@alt='Паперова «Java Spider», автора Джеффрі Арчер– фото №1']")
+    @FindBy(xpath = ".//*[@class='category-card category-layout expanded']")
     private WebElement imgBook;
 
     @FindBy(xpath = ".//button[@class='auth__icon ui-btn-nav-circle ']")
@@ -41,13 +36,10 @@ public class HomePage extends ParentPage{
     @FindBy(xpath = ".//button[@class='ui-btn-favorite square']")
     private WebElement buttonAddToFavorite;
 
-    @FindBy(xpath = ".//span[@class=\"h4 pointer ui-filter-checkbox__text\"and contains(text(),'My Favorite List') ]")
+    @FindBy(xpath = ".//span[@class='h4 pointer ui-filter-checkbox__text'and contains(text(),'My Favorite List') ]")
     private WebElement checkBoxList;
 
-    @FindBy(xpath = ".//button[@class='ui-btn-close product-layout__close']")
-    private WebElement closePageButton;
-
-    @FindBy(xpath = ".//*[@class=\"product-name\"]")
+    @FindBy(xpath = ".//*[@class='product-name']")
     private WebElement nameBooklocator;
 
     @FindBy(xpath = ".//button[@class='ui-btn-shopping-cart']")
@@ -56,7 +48,7 @@ public class HomePage extends ParentPage{
     @FindBy(xpath = ".//span[@class='header-clear-cart']")
     private WebElement deleteBookButton;
 
-    @FindBy(xpath = ".//button[@class=\"btn--info\"][2]")
+    @FindBy(xpath = ".//button[@class='btn--info'][2]")
     private WebElement OKButton;
 
     @FindBy(xpath = ".//span[@class='microcart-empty-title']")
@@ -105,29 +97,14 @@ public class HomePage extends ParentPage{
 
     public HomePage checkWhatBookWasFind(String nameBook) {
         Assert.assertEquals("The book with this name wasn't find", nameBook, locatorBook.getText());
-//        Assert.assertEquals("Number of books with name " + nameBook, 1, getPostsListWithNameOfBooks(nameBook).size());
         return this;
     }
-//
-//    public List<WebElement> getPostsListWithNameOfBooks(String nameBook) {
-//        return webDriver.findElements(By.xpath(String.format(nameOfBook, nameBook)));
-//    }
-//
-//    public HomePage clickProfileButton() {
-//        clickOnElement(profileButton);
-//        return this;
-//    }
 
     public HomePage clickOnButtonAddToCart() {
         clickOnElement(addToCartButton);
         return this;
     }
 
-//    public HomePage clickInImgBook() {
-//        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(25));
-//        clickOnElement(imgBook);
-//        return this;
-//    }
 
     public HomePage waitSuccessMessage() {
         isElementDisplayed(successMessage);

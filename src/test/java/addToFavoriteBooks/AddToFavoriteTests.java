@@ -1,16 +1,16 @@
 package addToFavoriteBooks;
 
 import baseTest.BaseTest;
+import libs.Util;
 import org.junit.Test;
 
 public class AddToFavoriteTests extends BaseTest {
     String nameBook = "Java Spider";
-    String nameList = "My Favorite List";
+    String nameList = "My Favorite List" + Util.getDateAndTimeFormatted();
     @Test
     public void addToFavoriteTest(){
         homePage.openHomePage()
                 .waitSuccessMessage()
-//                .clickProfileButton()
                 .getHeaderElement().clickOnMyProfileButton()
                 .clickOnButtonFavoriteBooks()
                 .createListFavoriteBooks(nameList)
@@ -18,10 +18,8 @@ public class AddToFavoriteTests extends BaseTest {
                 .getHeaderElement().enterTextInSearchField(nameBook)
                 .clickOnSearchButton()
                 .checkWhatBookWasFind(nameBook)
-//                .openPageWithBook()
                 .clickOnButtonAddToFavorite()
                 .chooseFavoriteListCheckBox(nameList)
-//                .closePageWithBook()
                 .getHeaderElement().clickOnMyProfileButton()
                 .clickOnButtonFavoriteBooks()
                 .checkWhatBookWasAddToFavoriteList(nameBook)

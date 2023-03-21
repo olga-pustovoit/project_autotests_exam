@@ -29,13 +29,10 @@
 package pages;
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.elements.HeaderElement;
-
-import java.util.List;
 
 public class MyProfilePage extends ParentPage {
     @FindBy(xpath = ".//button[@class=\"ui-btn-close ui-btn-close\" and @data-v-27fe0636 ]")
@@ -116,6 +113,6 @@ public class MyProfilePage extends ParentPage {
         clickOnElement(deliteListButton);
         clickOnElement(buttonDeletePopUp);
         logger.info(nameList + " was delete");
-        return new MyProfilePage(webDriver);
+        return this;
     }
 }

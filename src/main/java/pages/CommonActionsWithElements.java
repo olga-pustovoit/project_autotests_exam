@@ -4,13 +4,11 @@ import libs.ConfigProperties;
 import org.aeonbits.owner.ConfigFactory;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -20,9 +18,6 @@ public class CommonActionsWithElements {
     Logger logger = Logger.getLogger(getClass());
     public WebDriverWait webDriverWait10, webDriverWait15;
     public static ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
-
-//    String visibleText = "Приватне повідомлення";
-//    String locatorInDropDown = "//option[contains(text(),'" + visibleText + "')]";
 
     Actions actions;
 
@@ -83,36 +78,6 @@ public class CommonActionsWithElements {
             return false;
         }
     }
-
-//    protected void selectTextInDropDown(WebElement dropDown, String visibleText){
-//        try{
-//            Select select = new Select(dropDown);
-//            select.selectByVisibleText(visibleText);
-//            logger.info(visibleText + " was selected in DropDown");
-//        }catch (Exception e){
-//            printErrorAndStopTest(e);
-//        }
-//    }
-//
-//    protected void selectValueInDropDown(WebElement dropDown, String value){
-//        try{
-//            Select select = new Select(dropDown);
-//            select.selectByValue(value);
-//            logger.info(value + " was selected in DropDown");
-//        }catch (Exception e){
-//            printErrorAndStopTest(e);
-//        }
-//    }
-//
-//    protected void selectTextInDropDownUI(WebElement dropDown, String visibleText){
-//        try{
-//            clickOnElement(dropDown);
-//            clickOnElement(dropDown.findElement(By.xpath(locatorInDropDown)));
-//            logger.info(visibleText + " was selected in DropDown");
-//        }catch (Exception e){
-//            printErrorAndStopTest(e);
-//        }
-//    }
 
     private String getElementName (WebElement webElement){
         try {
