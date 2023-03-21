@@ -30,16 +30,15 @@ public class RegistrationErrorsTestWithExcel extends BaseTest {
         InputStream inputStream = new FileInputStream(CommonActionsWithElements.configProperties.DATA_FILE_PATH() + "testDataSuit.xls");
         return new SpreadsheetData(inputStream, "registrationErrors").getData();
     }
-
     @Test
     public void checkErrors() {
         loginPage.openLoginPage();
         loginPage.openRegistrationForm()
-                .enterUserNameInRegistrationForm("1")
-                .enterSurnameInRegistrationForm("2")
-                .enterPhoneInRegistrationForm("f")
-                .enterEmailInRegistrationForm("2")
-                .enterPasswordInRegistrationForm("12")
+                .enterUserNameInRegistrationForm(name)
+                .enterSurnameInRegistrationForm(surname)
+                .enterPhoneInRegistrationForm(phone)
+                .enterEmailInRegistrationForm(email)
+                .enterPasswordInRegistrationForm(password)
                 .checkErrorsMessages(expectedErrors)
         ;
 

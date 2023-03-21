@@ -16,11 +16,6 @@ abstract public class ParentPage extends CommonActionsWithElements{
     }
 
 
-    protected void waitChatToBeHide(){
-        webDriverWait10.until(ExpectedConditions.
-                invisibilityOfElementLocated(By.xpath(".//*[@id='chat-wrapper']")));
-    }
-
     abstract String getRelativeURL();
 
     /**

@@ -27,36 +27,36 @@ ER
         Check the username displayed in the page header
 _____________________________________
 
-#3 Check the possibility to open My Profile
+#3 Check the possibility to find book - Java Spider
 STR
    1. Log in to https://www.yakaboo.ua/
-   2. Click on the profile icon in the header
+   2. Click on search field
+   3. Input text - Java Spider
+   4. Click button "Find"
 ER
-   The profile page has opened
-   Check if img avatar and H2(username) displayed in the page
+   URL was change
+   Check what book with name Java Spider was searched
 _____________________________________
 
-#4 Check the Create Post option
+#4 Check to add the book to favorite books
 STR
    1. Log in to https://www.yakaboo.ua/
-   2. Click the Create Post button in the header
-   3. Enter the title and text in Body Content
-   4. Select a checkbox and a value from the list
-   5. Click on the "Save New Post" button
+   2. Click the My Profile button
+   3. Click on Favorite books
+   4. Create list
+   5. Find book - Java Spider
+   6. Click add to favorite
 ER
-   A new post has been created
-   Check what message displayed
-   Check what the first post has title which your entered in profile
-   Check count posts what was and count posts now
-   Check that the post has not doubled
+   Book - Java Spider was add to favorite books
+   Check what book Java Spider displayed in list of favorite books
 _____________________________________
 
-#5 Check the possibility to open your post (first of list)
+#5 Check the possibility to add the book to cart
 STR
    1. Log in to https://www.yakaboo.ua/
-   2. Click on the "My Profile" button in the header
-   3. Click on the first post from the list
+   2. Find book - Java Spider
+   3. Click on button add to cart
 ER
-   The post opened on the page
-   Check what buttons 'Edit', 'Delete' displayed on page
+   The book - Java Spider was add to cart
+   Check what Java Spider book displayed in cart
 _____________________________________

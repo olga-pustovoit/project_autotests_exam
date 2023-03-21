@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -17,17 +18,20 @@ import java.time.Duration;
 public class CommonActionsWithElements {
     protected WebDriver webDriver;
     Logger logger = Logger.getLogger(getClass());
-    WebDriverWait webDriverWait10, webDriverWait15;
+    public WebDriverWait webDriverWait10, webDriverWait15;
     public static ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
 
-    String visibleText = "Приватне повідомлення";
-    String locatorInDropDown = "//option[contains(text(),'" + visibleText + "')]";
+//    String visibleText = "Приватне повідомлення";
+//    String locatorInDropDown = "//option[contains(text(),'" + visibleText + "')]";
+
+    Actions actions;
 
     public CommonActionsWithElements(WebDriver webDriver) {
         this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
         webDriverWait10 = new WebDriverWait(webDriver, Duration.ofSeconds(configProperties.TIME_FOR_EXPLICIT_WAIT_LOW()));
         webDriverWait15 = new WebDriverWait(webDriver,Duration.ofSeconds(configProperties.TIME_FOR_EXPLICIT_WAIT_HIGH()));
+        actions = new Actions(this.webDriver);
     }
 
     protected void enterTextIntoElement(WebElement webElement, String text) {
@@ -43,7 +47,7 @@ public class CommonActionsWithElements {
 
     protected void clickOnElement(WebElement webElement) {
         try {
-            webDriverWait10.until(ExpectedConditions.elementToBeClickable(webElement));
+            webDriverWait15.until(ExpectedConditions.elementToBeClickable(webElement));
             String name = getElementName(webElement);
             webElement.click();
             logger.info(name + " Element was clicked");
@@ -52,13 +56,16 @@ public class CommonActionsWithElements {
         }
     }
 
-    protected void clickOnElement(String xpath){
-        try{
-            clickOnElement(webDriver.findElement(By.xpath(xpath)));
-        }catch (Exception e){
+    protected void hoverOnElement(WebElement webElement) {
+        try {
+            actions.moveToElement(webElement).perform();
+            webDriverWait15.until(ExpectedConditions.elementToBeClickable(webElement));
+            logger.info("Hover to element");
+        } catch (Exception e) {
             printErrorAndStopTest(e);
         }
     }
+
 
     protected boolean isElementDisplayed(WebElement webElement) {
         try {
@@ -77,35 +84,35 @@ public class CommonActionsWithElements {
         }
     }
 
-    protected void selectTextInDropDown(WebElement dropDown, String visibleText){
-        try{
-            Select select = new Select(dropDown);
-            select.selectByVisibleText(visibleText);
-            logger.info(visibleText + " was selected in DropDown");
-        }catch (Exception e){
-            printErrorAndStopTest(e);
-        }
-    }
-
-    protected void selectValueInDropDown(WebElement dropDown, String value){
-        try{
-            Select select = new Select(dropDown);
-            select.selectByValue(value);
-            logger.info(value + " was selected in DropDown");
-        }catch (Exception e){
-            printErrorAndStopTest(e);
-        }
-    }
-
-    protected void selectTextInDropDownUI(WebElement dropDown, String visibleText){
-        try{
-            clickOnElement(dropDown);
-            clickOnElement(dropDown.findElement(By.xpath(locatorInDropDown)));
-            logger.info(visibleText + " was selected in DropDown");
-        }catch (Exception e){
-            printErrorAndStopTest(e);
-        }
-    }
+//    protected void selectTextInDropDown(WebElement dropDown, String visibleText){
+//        try{
+//            Select select = new Select(dropDown);
+//            select.selectByVisibleText(visibleText);
+//            logger.info(visibleText + " was selected in DropDown");
+//        }catch (Exception e){
+//            printErrorAndStopTest(e);
+//        }
+//    }
+//
+//    protected void selectValueInDropDown(WebElement dropDown, String value){
+//        try{
+//            Select select = new Select(dropDown);
+//            select.selectByValue(value);
+//            logger.info(value + " was selected in DropDown");
+//        }catch (Exception e){
+//            printErrorAndStopTest(e);
+//        }
+//    }
+//
+//    protected void selectTextInDropDownUI(WebElement dropDown, String visibleText){
+//        try{
+//            clickOnElement(dropDown);
+//            clickOnElement(dropDown.findElement(By.xpath(locatorInDropDown)));
+//            logger.info(visibleText + " was selected in DropDown");
+//        }catch (Exception e){
+//            printErrorAndStopTest(e);
+//        }
+//    }
 
     private String getElementName (WebElement webElement){
         try {

@@ -1,6 +1,7 @@
 package pages;
 
-import libs.TestDate;
+import libs.TestData;
+import libs.Util;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -25,19 +26,20 @@ public class LoginPage extends ParentPage {
     @FindBy(xpath = ".//button[@class='ui-btn-primary' and contains(text(), '  Увійти')]")
     private WebElement buttonLogin;
 
-    @FindBy(id = ".//input[@name='reg_firstname']")
+    @FindBy(xpath = ".//input[@name='reg_firstname']")
     private WebElement inputLoginRegistration;
 
-    @FindBy(id = ".//input[@name='reg_email']")
+    @FindBy(xpath = ".//input[@name='reg_email']")
     private WebElement inputEmailRegistration;
 
-    @FindBy(id = ".//input[@name='reg_password']")
+    @FindBy(xpath = ".//input[@name='reg_password']")
     private WebElement inputPasswordRegistration;
 
-    private static final String listOfErrorsLocator = "";
+    private static final String listOfErrorsLocator = ".//*[@class='err-mess__text ui-base-field__message']";
 
     @FindBy(xpath = listOfErrorsLocator)
     private List<WebElement> listOfErrors;
+
     @FindBy(xpath = ".//button[@class='ui-btn-account']")
     private WebElement buttonSignInRegistration;
 
@@ -50,6 +52,9 @@ public class LoginPage extends ParentPage {
     @FindBy(xpath = ".//input[@type='tel']")
     private WebElement inputPhoneIntoRegistrationForm;
 
+    @FindBy(xpath = ".//input[@type='checkbox']")
+    private WebElement checkBox;
+
     public LoginPage(WebDriver webDriver) {
         super(webDriver);
     }
@@ -59,7 +64,7 @@ public class LoginPage extends ParentPage {
     }
     @Override
     String getRelativeURL() {
-        return "/";
+        return "";
     }
 
     public void openLoginPage() {
@@ -88,14 +93,10 @@ public class LoginPage extends ParentPage {
     }
 
     public HomePage fillingLoginFormWithValidCred() {
-        enterNumberPhoneIntoInputLogin(TestDate.VALID_LOGIN);
-        enterPasswordIntoInputPassword(TestDate.VALID_PASSWORD);
+        enterNumberPhoneIntoInputLogin(TestData.VALID_LOGIN);
+        enterPasswordIntoInputPassword(TestData.VALID_PASSWORD);
         clickOnButtonLogin();
         return new HomePage(webDriver);
-    }
-
-    public boolean isButtonSignInDisplayed() {
-        return isElementDisplayed(buttonLogin);
     }
 
     public LoginPage enterUserNameInRegistrationForm(String userName) {
@@ -110,18 +111,19 @@ public class LoginPage extends ParentPage {
 
     public LoginPage enterPasswordInRegistrationForm(String password){
         enterTextIntoElement(inputPasswordRegistration, password);
+        clickOnElement(inputEmailRegistration);
         return this;
     }
 
     public LoginPage checkErrorsMessages(String expectedErrors) {
-        String[] expectedErrorsArray =  expectedErrors.split(",");
-        webDriverWait10
+        String[] expectedErrorsArray =  expectedErrors.split(";");
+        webDriverWait15
                 .withMessage("Number of messages should be " + expectedErrorsArray.length)
                 .until(ExpectedConditions
                         .numberOfElementsToBe(By.xpath(listOfErrorsLocator),expectedErrorsArray.length));
-
+        Util.waitABit(1);
         ArrayList<String> actualTextFromErrors = new ArrayList<>();
-        for (WebElement element:listOfErrors) {
+        for (WebElement element : listOfErrors) {
             actualTextFromErrors.add(element.getText());
         }
 
